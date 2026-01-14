@@ -1,65 +1,166 @@
+import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
+import { featuredItems } from "@/data/menu";
+import { testimonials } from "@/data/testimonials";
+import { SectionHeading } from "@/components/section-heading";
+import { FadeIn } from "@/components/fade-in";
+import { HeroActions } from "@/components/hero-actions";
+import { buttonClasses } from "@/components/ui/button";
+import { CardamomIcon, DatesIcon, SaffronIcon } from "@/components/icons";
+
+export const metadata: Metadata = {
+  title: "Home",
+  description:
+    "Discover Qahwa Najd, a premium Saudi specialty coffee portfolio blending Najdi ritual with modern roasting.",
+};
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <div className="mx-auto flex w-full max-w-6xl flex-col gap-20 px-6 pb-24 pt-16 md:px-10">
+      <section className="relative grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+        <div className="absolute inset-0 -z-10 rounded-[32px] bg-cream-50/70" aria-hidden="true" />
+        <div className="absolute inset-0 -z-10 rounded-[32px] bg-ornament opacity-40" aria-hidden="true" />
+
+        <FadeIn className="space-y-6">
+          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-espresso-400">
+            Qahwa Najd · Saudi Arabia
           </p>
+          <h1 className="text-4xl font-semibold text-espresso-950 md:text-5xl lg:text-6xl">
+            Saudi coffee culture refined into a modern, premium ritual.
+          </h1>
+          <p className="max-w-xl text-base text-espresso-600 md:text-lg">
+            Crafted in Riyadh, Qahwa Najd celebrates Najdi hospitality with light roasts,
+            aromatic spices, and ceremonial presentation.
+          </p>
+          <HeroActions />
+        </FadeIn>
+
+        <FadeIn className="relative">
+          <div className="absolute -left-6 top-6 h-24 w-24 rounded-full border border-gold-500/40" />
+          <Image
+            src="/images/qahwa-1.svg"
+            alt="Signature Saudi Qahwa service"
+            width={520}
+            height={520}
+            className="rounded-[32px] shadow-soft"
+            priority
+          />
+        </FadeIn>
+      </section>
+
+      <section className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+        <FadeIn>
+          <SectionHeading
+            eyebrow="Signature Ritual"
+            title="Saudi Qahwa Experience"
+            description="An elegant ritual shaped by cardamom, saffron, and dates — served with quiet ceremony."
+          />
+        </FadeIn>
+        <div className="grid gap-6 md:grid-cols-3">
+          {[
+            { title: "Cardamom", icon: CardamomIcon },
+            { title: "Saffron", icon: SaffronIcon },
+            { title: "Dates", icon: DatesIcon },
+          ].map((item) => (
+            <FadeIn
+              key={item.title}
+              className="rounded-[24px] border border-sand-200 bg-cream-50 p-6 shadow-card"
+            >
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-sand-100 text-espresso-700">
+                <item.icon className="h-6 w-6" />
+              </div>
+              <h3 className="mt-4 text-lg font-semibold text-espresso-950">
+                {item.title}
+              </h3>
+              <p className="mt-2 text-sm text-espresso-600">
+                A refined aromatic note that defines the Najdi pour.
+              </p>
+            </FadeIn>
+          ))}
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      <section className="space-y-8">
+        <SectionHeading
+          eyebrow="Featured Selection"
+          title="Curated signature drinks"
+          description="A rotating edit of our most celebrated qahwa, espresso, and cold brew creations."
+        />
+        <div className="flex gap-6 overflow-x-auto pb-4 md:grid md:grid-cols-3 md:overflow-visible">
+          {featuredItems.map((item) => (
+            <FadeIn
+              key={item.id}
+              className="min-w-[260px] rounded-[24px] border border-sand-200 bg-cream-50 p-5 shadow-card md:min-w-0"
+            >
+              <Image
+                src={item.image}
+                alt={item.name}
+                width={320}
+                height={240}
+                className="h-44 w-full rounded-[20px] object-cover"
+              />
+              <div className="mt-4 flex items-center justify-between">
+                <h3 className="text-base font-semibold text-espresso-950">
+                  {item.name}
+                </h3>
+                <span className="text-sm font-semibold text-espresso-700">
+                  SAR {item.price}
+                </span>
+              </div>
+              <p className="mt-2 text-sm text-espresso-600">{item.description}</p>
+            </FadeIn>
+          ))}
         </div>
-      </main>
+      </section>
+
+      <section className="grid gap-8 rounded-[32px] border border-sand-200 bg-cream-50 px-6 py-10 md:grid-cols-[1.1fr_0.9fr] md:px-10">
+        <FadeIn>
+          <SectionHeading
+            eyebrow="Voices"
+            title="Testimonials from Saudi coffee lovers"
+            description="A few words from collaborators and community members who value the Najdi ritual."
+          />
+        </FadeIn>
+        <div className="grid gap-5">
+          {testimonials.map((testimonial) => (
+            <FadeIn
+              key={testimonial.name}
+              className="rounded-[22px] border border-sand-200 bg-sand-50 p-5"
+            >
+              <p className="text-sm text-espresso-700">“{testimonial.quote}”</p>
+              <div className="mt-4 text-xs font-semibold uppercase tracking-[0.25em] text-espresso-400">
+                {testimonial.name} · {testimonial.title}
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </section>
+
+      <section className="grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+        <FadeIn className="relative">
+          <Image
+            src="/images/interior-1.svg"
+            alt="Qahwa Najd interior"
+            width={520}
+            height={380}
+            className="rounded-[32px] shadow-soft"
+          />
+        </FadeIn>
+        <FadeIn className="space-y-5">
+          <SectionHeading
+            eyebrow="Our Story"
+            title="A portfolio brand rooted in Najdi hospitality"
+            description="From sourcing to roasting, every detail honors Saudi culture while embracing modern elegance."
+          />
+          <Link
+            href="/about"
+            className={buttonClasses({ variant: "secondary", size: "md" })}
+          >
+            Discover the story
+          </Link>
+        </FadeIn>
+      </section>
     </div>
   );
 }

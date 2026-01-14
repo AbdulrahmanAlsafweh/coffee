@@ -1,26 +1,145 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-manrope);
+  --font-arabic: var(--font-noto-arabic);
+
+  --color-sand-50: #fbf6ec;
+  --color-sand-100: #f4e8d2;
+  --color-sand-200: #ead8ba;
+  --color-sand-300: #dcc39b;
+  --color-sand-400: #c8a978;
+
+  --color-date-200: #e5c29d;
+  --color-date-400: #c18853;
+  --color-date-500: #ab6e3a;
+
+  --color-espresso-400: #7a513d;
+  --color-espresso-600: #5b3628;
+  --color-espresso-800: #3b2319;
+  --color-espresso-950: #22120d;
+
+  --color-ink-900: #2a1a12;
+  --color-cream-50: #fdfbf6;
+  --color-gold-500: #d6a756;
+  --color-olive-500: #7a7d50;
+
+  --radius-card: 20px;
+  --radius-pill: 999px;
+
+  --shadow-soft: 0 20px 60px -30px rgba(44, 28, 19, 0.45);
+  --shadow-card: 0 18px 40px -24px rgba(44, 28, 19, 0.5);
+
+  --animate-float: float 16s ease-in-out infinite;
+  --animate-float-slow: float 26s ease-in-out infinite;
+  --animate-fade-in: fade-in 0.8s ease-out both;
+  --animate-rise: rise 1s ease-out both;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  * {
+    @apply border-sand-200;
+  }
+
+  body {
+    @apply bg-sand-50 text-ink-900 antialiased;
+    font-family: var(--font-sans), "Segoe UI", sans-serif;
+  }
+
+  body[data-lang="ar"] {
+    font-family: var(--font-arabic), "Tahoma", sans-serif;
+  }
+
+  a {
+    @apply transition-colors;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .bg-grain {
+    background-image: url("/textures/grain.svg");
+    background-size: 160px 160px;
+    opacity: 0.35;
+  }
+
+  .bg-ornament {
+    background-image: url("/patterns/arabesque.svg");
+    background-size: 240px 240px;
+    opacity: 0.35;
+  }
+
+  .bg-mesh {
+    background-image: radial-gradient(
+        circle at 15% 20%,
+        rgba(214, 167, 86, 0.16),
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 85% 15%,
+        rgba(90, 55, 42, 0.18),
+        transparent 55%
+      ),
+      radial-gradient(
+        circle at 70% 75%,
+        rgba(171, 110, 58, 0.15),
+        transparent 60%
+      );
+  }
+
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .mask-fade {
+    mask-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 0.2) 80%,
+      rgba(0, 0, 0, 0) 100%
+    );
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -18px, 0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 16px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
 }

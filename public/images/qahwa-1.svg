@@ -1,0 +1,16 @@
+﻿<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g-qahwa-1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F4E8D2"/>
+      <stop offset="100%" stop-color="#AB6E3A"/>
+    </linearGradient>
+    <pattern id="p-qahwa-1" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M30 0L60 30L30 60L0 30Z" stroke="rgba(255,255,255,0.3)" stroke-width="1" fill="none"/>
+      <circle cx="30" cy="30" r="6" fill="rgba(255,255,255,0.25)"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="900" rx="48" fill="url(#g-qahwa-1)"/>
+  <rect width="1200" height="900" rx="48" fill="url(#p-qahwa-1)"/>
+  <rect x="120" y="120" width="960" height="660" rx="40" fill="rgba(0,0,0,0.08)"/>
+  <text x="160" y="720" fill="rgba(255,255,255,0.8)" font-size="64" font-family="Arial" letter-spacing="6">Saudi Qahwa</text>
+</svg>
