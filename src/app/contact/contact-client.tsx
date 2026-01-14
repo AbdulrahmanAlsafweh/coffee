@@ -35,13 +35,13 @@ export default function ContactClient() {
   function validate(values: FormState) {
     const nextErrors: Partial<FormState> = {};
     if (values.name.trim().length < 2) {
-      nextErrors.name = "Please enter your name.";
+      nextErrors.name = t.contact.errors.name;
     }
     if (!/^\\+?[0-9\\s-]{7,}$/.test(values.phone)) {
-      nextErrors.phone = "Enter a valid phone number.";
+      nextErrors.phone = t.contact.errors.phone;
     }
     if (values.message.trim().length < 10) {
-      nextErrors.message = "Message should be at least 10 characters.";
+      nextErrors.message = t.contact.errors.message;
     }
     return nextErrors;
   }
@@ -55,7 +55,7 @@ export default function ContactClient() {
     const nextErrors = validate(form);
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length === 0) {
-      setStatus("Message sent. We'll be in touch within 24 hours.");
+      setStatus(t.contact.statusSuccess);
       setForm(initialState);
     } else {
       setStatus(null);
@@ -65,18 +65,18 @@ export default function ContactClient() {
   async function handleCopy() {
     try {
       await navigator.clipboard.writeText("+966 11 555 8822");
-      setToast("Phone number copied.");
+      setToast(t.contact.toastCopied);
     } catch {
-      setToast("Unable to copy. Please copy manually.");
+      setToast(t.contact.toastFailed);
     }
   }
 
   return (
     <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-6 pb-24 pt-16 md:px-10">
       <SectionHeading
-        eyebrow="Contact"
-        title="Start a Saudi coffee collaboration"
-        description="Reach out for partnerships, private tastings, or portfolio inquiries."
+        eyebrow={t.contact.eyebrow}
+        title={t.contact.title}
+        description={t.contact.description}
       />
 
       <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
@@ -168,9 +168,9 @@ export default function ContactClient() {
           >
             <div className="space-y-3 text-sm text-espresso-600">
               <p className="text-xs font-semibold uppercase tracking-[0.3em] text-espresso-400">
-                Store Information
+                {t.contact.storeInfo}
               </p>
-              <p>King Fahd District, Riyadh, Saudi Arabia</p>
+              <p>{t.contact.address}</p>
               <div className={cn("flex flex-wrap items-center gap-3", isRTL && "justify-end")}>
                 <span>+966 11 555 8822</span>
                 <button
@@ -178,7 +178,7 @@ export default function ContactClient() {
                   onClick={handleCopy}
                   className="rounded-full border border-sand-200 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-espresso-600 hover:border-espresso-400"
                 >
-                  Copy
+                  {t.contact.copy}
                 </button>
               </div>
             </div>
@@ -191,12 +191,12 @@ export default function ContactClient() {
             )}
           >
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-espresso-400">
-              Business Hours
+              {t.contact.hours}
             </p>
             <ul className="mt-4 space-y-2 text-sm text-espresso-600">
-              <li>Sunday - Thursday: 7:00 AM – 10:00 PM</li>
-              <li>Friday: 2:00 PM – 12:00 AM</li>
-              <li>Saturday: 9:00 AM – 12:00 AM</li>
+              {t.contact.hoursList.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
             </ul>
           </div>
 

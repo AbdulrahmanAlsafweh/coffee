@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 export default function MenuClient() {
-  const { t, isRTL } = useLanguage();
+  const { t, isRTL, lang } = useLanguage();
   const [activeCategory, setActiveCategory] = useState<MenuCategory>("Saudi Qahwa");
   const [selectedItem, setSelectedItem] = useState<MenuItem | null>(null);
   const [cartCount, setCartCount] = useState(0);
@@ -41,16 +41,16 @@ export default function MenuClient() {
   return (
     <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-6 pb-24 pt-16 md:px-10">
       <SectionHeading
-        eyebrow="Menu"
-        title="A curated Saudi coffee menu"
-        description="Explore qahwa rituals, espresso interpretations, and Najdi-inspired comfort dishes."
+        eyebrow={t.menu.eyebrow}
+        title={t.menu.title}
+        description={t.menu.description}
       />
 
       <div className={cn("flex flex-wrap items-center gap-3", isRTL && "justify-end")}>
         <div
           className="flex flex-wrap items-center gap-3"
           role="tablist"
-          aria-label="Menu categories"
+          aria-label={t.menu.categoriesLabel}
         >
           {menuCategories.map((category) => (
             <button
@@ -76,7 +76,7 @@ export default function MenuClient() {
             isRTL && "ml-0 mr-auto"
           )}
         >
-          Cart {cartCount}
+          {t.menu.cart} {cartCount}
         </div>
       </div>
 
@@ -90,26 +90,32 @@ export default function MenuClient() {
               "group flex cursor-pointer flex-col rounded-[24px] border border-sand-200 bg-cream-50 p-5 shadow-card transition hover:-translate-y-1 hover:border-espresso-400",
               isRTL ? "text-right" : "text-left"
             )}
-            aria-label={`View details for ${item.name}`}
+            aria-label={`${t.menu.viewDetails}: ${lang === "ar" ? item.nameAr : item.name}`}
             whileHover={{ y: -4 }}
             whileTap={{ scale: 0.98 }}
           >
             <Image
               src={item.image}
-              alt={item.name}
+              alt={lang === "ar" ? item.nameAr : item.name}
               width={420}
               height={280}
               className="h-44 w-full rounded-[20px] object-cover"
             />
             <div className="mt-4 flex items-center justify-between">
-              <h3 className="text-lg font-semibold text-espresso-950">{item.name}</h3>
-              <span className="text-sm font-semibold text-espresso-700">SAR {item.price}</span>
+              <h3 className="text-lg font-semibold text-espresso-950">
+                {lang === "ar" ? item.nameAr : item.name}
+              </h3>
+              <span className="text-sm font-semibold text-espresso-700">
+                {t.common.currency} {item.price}
+              </span>
             </div>
-            <p className="mt-2 text-sm text-espresso-600">{item.description}</p>
+            <p className="mt-2 text-sm text-espresso-600">
+              {lang === "ar" ? item.descriptionAr : item.description}
+            </p>
             {item.badges?.length ? (
               <div className="mt-4 flex flex-wrap gap-2">
                 {item.badges.map((badge) => (
-                  <Badge key={badge} label={badge} />
+                  <Badge key={badge} label={t.menu.badges[badge]} />
                 ))}
               </div>
             ) : null}
@@ -126,7 +132,7 @@ export default function MenuClient() {
             exit={{ opacity: 0 }}
             role="dialog"
             aria-modal="true"
-            aria-label={`${selectedItem.name} details`}
+            aria-label={`${t.menu.viewDetails}: ${lang === "ar" ? selectedItem.nameAr : selectedItem.name}`}
             onClick={() => setSelectedItem(null)}
           >
             <motion.div
@@ -146,7 +152,7 @@ export default function MenuClient() {
                     {t.menu.categories[selectedItem.category]}
                   </p>
                   <h3 className="mt-2 text-2xl font-semibold text-espresso-950">
-                    {selectedItem.name}
+                    {lang === "ar" ? selectedItem.nameAr : selectedItem.name}
                   </h3>
                 </div>
                 <button
@@ -155,29 +161,31 @@ export default function MenuClient() {
                   onClick={() => setSelectedItem(null)}
                   className="rounded-full border border-sand-200 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-espresso-600 hover:border-espresso-400"
                 >
-                  Close
+                  {t.common.close}
                 </button>
               </div>
               <div className="mt-4">
                 <Image
                   src={selectedItem.image}
-                  alt={selectedItem.name}
+                  alt={lang === "ar" ? selectedItem.nameAr : selectedItem.name}
                   width={520}
                   height={360}
                   className="h-56 w-full rounded-[22px] object-cover"
                 />
               </div>
-              <p className="mt-4 text-sm text-espresso-600">{selectedItem.description}</p>
+              <p className="mt-4 text-sm text-espresso-600">
+                {lang === "ar" ? selectedItem.descriptionAr : selectedItem.description}
+              </p>
               <div className="mt-4 flex flex-wrap items-center justify-between gap-4">
                 <span className="text-lg font-semibold text-espresso-950">
-                  SAR {selectedItem.price}
+                  {t.common.currency} {selectedItem.price}
                 </span>
                 <Button
                   type="button"
                   onClick={() => setCartCount((count) => count + 1)}
                   variant="primary"
                 >
-                  Add to Order
+                  {t.menu.addToOrder}
                 </Button>
               </div>
             </motion.div>

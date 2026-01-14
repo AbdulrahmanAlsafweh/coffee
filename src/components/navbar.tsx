@@ -27,13 +27,13 @@ export function Navbar() {
         href="#main-content"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-espresso-800 focus:px-4 focus:py-2 focus:text-sand-50"
       >
-        Skip to content
+        {t.common.skipToContent}
       </a>
       <div className="border-b border-sand-200/60 bg-sand-50/85 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 md:px-10">
           <div className={cn("flex items-center gap-4", isRTL && "flex-row-reverse")}>
             <Link href="/" className="text-lg font-semibold tracking-wide text-espresso-950">
-              Qahwa Najd
+              {t.brand.name}
             </Link>
           </div>
 
@@ -63,7 +63,7 @@ export function Navbar() {
             aria-expanded={open}
             aria-controls="mobile-menu"
           >
-            Menu
+            {t.common.menu}
           </button>
         </div>
       </div>

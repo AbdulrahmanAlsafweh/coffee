@@ -5,10 +5,12 @@ import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { galleryImages } from "@/data/gallery";
 import { SectionHeading } from "@/components/section-heading";
+import { useLanguage } from "@/components/language-provider";
 
 type GalleryImage = (typeof galleryImages)[number];
 
 export default function GalleryClient() {
+  const { t, lang } = useLanguage();
   const [selected, setSelected] = useState<GalleryImage | null>(null);
   const closeButtonRef = useRef<HTMLButtonElement | null>(null);
 
@@ -31,31 +33,34 @@ export default function GalleryClient() {
   return (
     <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-6 pb-24 pt-16 md:px-10">
       <SectionHeading
-        eyebrow="Gallery"
-        title="Saudi coffee culture in motion"
-        description="A visual story of qahwa rituals, interiors, and Najdi-inspired details."
+        eyebrow={t.gallery.eyebrow}
+        title={t.gallery.title}
+        description={t.gallery.description}
       />
 
       <div className="columns-1 gap-6 space-y-6 md:columns-2 lg:columns-3">
-        {galleryImages.map((image, index) => (
+        {galleryImages.map((image, index) => {
+          const alt = lang === "ar" ? image.altAr : image.alt;
+          return (
           <motion.button
             key={image.src + index}
             type="button"
             onClick={() => setSelected(image)}
             className="w-full break-inside-avoid overflow-hidden rounded-[24px] border border-sand-200 bg-cream-50 shadow-card"
-            aria-label={`Open image: ${image.alt}`}
+            aria-label={`${t.gallery.openImage}: ${alt}`}
             whileHover={{ y: -6 }}
             whileTap={{ scale: 0.98 }}
           >
             <Image
               src={image.src}
-              alt={image.alt}
+              alt={alt}
               width={520}
               height={420}
               className="h-auto w-full object-cover"
             />
           </motion.button>
-        ))}
+        );
+        })}
       </div>
 
       <AnimatePresence>
@@ -67,7 +72,7 @@ export default function GalleryClient() {
             exit={{ opacity: 0 }}
             role="dialog"
             aria-modal="true"
-            aria-label="Gallery lightbox"
+            aria-label={t.gallery.lightboxLabel}
             onClick={() => setSelected(null)}
           >
             <motion.div
@@ -80,20 +85,22 @@ export default function GalleryClient() {
             >
               <Image
                 src={selected.src}
-                alt={selected.alt}
+                alt={lang === "ar" ? selected.altAr : selected.alt}
                 width={1200}
                 height={800}
                 className="h-auto w-full object-cover"
               />
               <div className="flex items-center justify-between px-6 py-4">
-                <p className="text-sm text-espresso-600">{selected.alt}</p>
+                <p className="text-sm text-espresso-600">
+                  {lang === "ar" ? selected.altAr : selected.alt}
+                </p>
                 <button
                   ref={closeButtonRef}
                   type="button"
                   onClick={() => setSelected(null)}
                   className="rounded-full border border-sand-200 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-espresso-600 hover:border-espresso-400"
                 >
-                  Close
+                  {t.common.close}
                 </button>
               </div>
             </motion.div>
