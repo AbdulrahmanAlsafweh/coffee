@@ -11,7 +11,7 @@ import { FadeIn } from "@/components/fade-in";
 import { HeroActions } from "@/components/hero-actions";
 import { buttonClasses } from "@/components/ui/button-classes";
 import { CardamomIcon, DatesIcon, SaffronIcon } from "@/components/icons";
-
+// 
 export default function HomeClient() {
   const { t, lang } = useLanguage();
 
