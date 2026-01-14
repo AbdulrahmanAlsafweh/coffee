@@ -9,6 +9,7 @@ import {
   SourcingIcon,
 } from "@/components/icons";
 import { team, timeline, values } from "@/data/about";
+import { media } from "@/data/media";
 
 export const metadata: Metadata = {
   title: "About",
@@ -44,7 +45,7 @@ export default function AboutPage() {
 
         <FadeIn className="relative">
           <Image
-            src="/images/gallery-2.svg"
+            src={media.about}
             alt="Saudi coffee hospitality setup"
             width={520}
             height={520}

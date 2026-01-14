@@ -9,14 +9,12 @@ import { cn } from "@/lib/utils";
 
 type FormState = {
   name: string;
-  email: string;
   phone: string;
   message: string;
 };
 
 const initialState: FormState = {
   name: "",
-  email: "",
   phone: "",
   message: "",
 };
@@ -38,9 +36,6 @@ export default function ContactClient() {
     const nextErrors: Partial<FormState> = {};
     if (values.name.trim().length < 2) {
       nextErrors.name = "Please enter your name.";
-    }
-    if (!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(values.email)) {
-      nextErrors.email = "Enter a valid email address.";
     }
     if (!/^\\+?[0-9\\s-]{7,}$/.test(values.phone)) {
       nextErrors.phone = "Enter a valid phone number.";
@@ -111,28 +106,6 @@ export default function ContactClient() {
             </div>
             <div>
               <label
-                htmlFor="contact-email"
-                className="text-xs font-semibold uppercase tracking-[0.2em] text-espresso-400"
-              >
-                {t.contact.email}
-              </label>
-              <input
-                id="contact-email"
-                type="email"
-                value={form.email}
-                onChange={(event) => handleChange("email", event.target.value)}
-                className="mt-2 w-full rounded-full border border-sand-200 bg-sand-50 px-4 py-2 text-sm text-espresso-800 focus:border-espresso-400 focus:outline-none focus:ring-2 focus:ring-gold-500/40"
-                aria-invalid={Boolean(errors.email)}
-                aria-describedby={errors.email ? "email-error" : undefined}
-              />
-              {errors.email ? (
-                <p id="email-error" className="mt-2 text-xs text-espresso-600">
-                  {errors.email}
-                </p>
-              ) : null}
-            </div>
-            <div>
-              <label
                 htmlFor="contact-phone"
                 className="text-xs font-semibold uppercase tracking-[0.2em] text-espresso-400"
               >
@@ -198,7 +171,6 @@ export default function ContactClient() {
                 Store Information
               </p>
               <p>King Fahd District, Riyadh, Saudi Arabia</p>
-              <p>hello@qahwanajd.sa</p>
               <div className={cn("flex flex-wrap items-center gap-3", isRTL && "justify-end")}>
                 <span>+966 11 555 8822</span>
                 <button
@@ -228,24 +200,6 @@ export default function ContactClient() {
             </ul>
           </div>
 
-          <div
-            className={cn(
-              "relative overflow-hidden rounded-[28px] border border-sand-200 bg-sand-50 shadow-card",
-              isRTL && "text-right"
-            )}
-          >
-            <div className="absolute inset-0 bg-ornament opacity-40" aria-hidden="true" />
-            <div className="absolute inset-0 bg-mesh opacity-70" aria-hidden="true" />
-            <div className="relative p-6">
-              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-espresso-400">
-                Map Placeholder
-              </p>
-              <div className="mt-4 h-48 rounded-[20px] border border-sand-200 bg-sand-100" />
-              <p className="mt-4 text-sm text-espresso-600">
-                Located in Riyadh with easy access to the city&apos;s cultural district.
-              </p>
-            </div>
-          </div>
         </div>
       </div>
 

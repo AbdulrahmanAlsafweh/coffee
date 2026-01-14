@@ -5,6 +5,7 @@ import { Providers } from "@/components/providers";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { AmbientBackground } from "@/components/ambient-background";
+import { PageTransition } from "@/components/page-transition";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -68,7 +69,7 @@ export default function RootLayout({
             <AmbientBackground />
             <Navbar />
             <main id="main-content" className="relative z-10">
-              {children}
+              <PageTransition>{children}</PageTransition>
             </main>
             <Footer />
           </div>

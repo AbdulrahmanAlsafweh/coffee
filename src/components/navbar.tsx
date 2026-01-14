@@ -35,9 +35,6 @@ export function Navbar() {
             <Link href="/" className="text-lg font-semibold tracking-wide text-espresso-950">
               Qahwa Najd
             </Link>
-            <span className="hidden rounded-full border border-sand-200 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.3em] text-espresso-400 md:inline-flex">
-              Saudi Specialty
-            </span>
           </div>
 
           <nav className="hidden items-center gap-6 md:flex" aria-label="Primary navigation">

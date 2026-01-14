@@ -1,3 +1,5 @@
+import { media } from "@/data/media";
+
 export const timeline = [
   {
     year: "2017",
@@ -24,19 +26,19 @@ export const team = [
     name: "Sara AlZahrani",
     role: "Founder & Roast Director",
     bio: "Shaping Najdi flavor profiles with heritage spices and modern roasting craft.",
-    image: "/images/gallery-1.svg",
+    image: media.team.one,
   },
   {
     name: "Faisal AlGhamdi",
     role: "Hospitality Lead",
     bio: "Designing rituals that turn every pour into a story of Saudi generosity.",
-    image: "/images/gallery-2.svg",
+    image: media.team.two,
   },
   {
     name: "Huda AlRashed",
     role: "Brand Curator",
     bio: "Curating partnerships with artisans, designers, and cultural storytellers.",
-    image: "/images/gallery-3.svg",
+    image: media.team.three,
   },
 ];
 

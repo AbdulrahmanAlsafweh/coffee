@@ -1,34 +1,36 @@
+import { media } from "@/data/media";
+
 export const galleryImages = [
   {
-    src: "/images/gallery-1.svg",
-    alt: "Roastery light and brass equipment",
+    src: media.gallery.one,
+    alt: "Roastery beans and brass accents",
   },
   {
-    src: "/images/gallery-2.svg",
-    alt: "Majlis seating with warm textiles",
+    src: media.gallery.two,
+    alt: "Dates and qahwa service detail",
   },
   {
-    src: "/images/gallery-3.svg",
-    alt: "Date tray and qahwa cups",
+    src: media.gallery.three,
+    alt: "Handcrafted Saudi coffee cups",
   },
   {
-    src: "/images/gallery-4.svg",
+    src: media.gallery.four,
     alt: "Saudi coffee ceremony moment",
   },
   {
-    src: "/images/interior-1.svg",
-    alt: "Saudi inspired interior lighting",
+    src: media.gallery.five,
+    alt: "Najdi interior with warm textiles",
   },
   {
-    src: "/images/qahwa-1.svg",
-    alt: "Pouring traditional qahwa",
+    src: media.gallery.six,
+    alt: "Slow brew bar detail",
   },
   {
-    src: "/images/espresso-1.svg",
-    alt: "Espresso craft details",
+    src: media.gallery.seven,
+    alt: "Latte art with golden crema",
   },
   {
-    src: "/images/coldbrew-1.svg",
-    alt: "Cold brew with cardamom garnish",
+    src: media.gallery.eight,
+    alt: "Traditional dallah pour",
   },
 ];

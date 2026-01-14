@@ -3,10 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { featuredItems } from "@/data/menu";
 import { testimonials } from "@/data/testimonials";
+import { media } from "@/data/media";
 import { SectionHeading } from "@/components/section-heading";
 import { FadeIn } from "@/components/fade-in";
 import { HeroActions } from "@/components/hero-actions";
-import { buttonClasses } from "@/components/ui/button";
+import { buttonClasses } from "@/components/ui/button-classes";
 import { CardamomIcon, DatesIcon, SaffronIcon } from "@/components/icons";
 
 export const metadata: Metadata = {
@@ -39,7 +40,7 @@ export default function Home() {
         <FadeIn className="relative">
           <div className="absolute -left-6 top-6 h-24 w-24 rounded-full border border-gold-500/40" />
           <Image
-            src="/images/qahwa-1.svg"
+            src={media.hero}
             alt="Signature Saudi Qahwa service"
             width={520}
             height={520}
@@ -87,11 +88,11 @@ export default function Home() {
           title="Curated signature drinks"
           description="A rotating edit of our most celebrated qahwa, espresso, and cold brew creations."
         />
-        <div className="flex gap-6 overflow-x-auto pb-4 md:grid md:grid-cols-3 md:overflow-visible">
+        <div className="flex snap-x snap-mandatory gap-6 overflow-x-auto pb-4 md:grid md:grid-cols-3 md:overflow-visible">
           {featuredItems.map((item) => (
             <FadeIn
               key={item.id}
-              className="min-w-[260px] rounded-[24px] border border-sand-200 bg-cream-50 p-5 shadow-card md:min-w-0"
+              className="min-w-[260px] snap-start rounded-[24px] border border-sand-200 bg-cream-50 p-5 shadow-card md:min-w-0"
             >
               <Image
                 src={item.image}
@@ -140,7 +141,7 @@ export default function Home() {
       <section className="grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr]">
         <FadeIn className="relative">
           <Image
-            src="/images/interior-1.svg"
+            src={media.interior}
             alt="Qahwa Najd interior"
             width={520}
             height={380}

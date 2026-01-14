@@ -43,6 +43,7 @@ export default function GalleryClient() {
             type="button"
             onClick={() => setSelected(image)}
             className="w-full break-inside-avoid overflow-hidden rounded-[24px] border border-sand-200 bg-cream-50 shadow-card"
+            aria-label={`Open image: ${image.alt}`}
             whileHover={{ y: -6 }}
             whileTap={{ scale: 0.98 }}
           >

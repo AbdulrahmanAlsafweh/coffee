@@ -24,7 +24,6 @@ export const translations = {
     },
     contact: {
       name: "Name",
-      email: "Email",
       phone: "Phone",
       message: "Message",
       submit: "Send Message",
@@ -57,7 +56,6 @@ export const translations = {
     },
     contact: {
       name: "الاسم",
-      email: "البريد الإلكتروني",
       phone: "الهاتف",
       message: "رسالتك",
       submit: "إرسال",

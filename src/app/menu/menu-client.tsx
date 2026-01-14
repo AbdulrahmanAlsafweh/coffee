@@ -86,7 +86,11 @@ export default function MenuClient() {
             key={item.id}
             type="button"
             onClick={() => setSelectedItem(item)}
-            className="group flex cursor-pointer flex-col rounded-[24px] border border-sand-200 bg-cream-50 p-5 text-left shadow-card transition hover:-translate-y-1 hover:border-espresso-400"
+            className={cn(
+              "group flex cursor-pointer flex-col rounded-[24px] border border-sand-200 bg-cream-50 p-5 shadow-card transition hover:-translate-y-1 hover:border-espresso-400",
+              isRTL ? "text-right" : "text-left"
+            )}
+            aria-label={`View details for ${item.name}`}
             whileHover={{ y: -4 }}
             whileTap={{ scale: 0.98 }}
           >
@@ -126,7 +130,10 @@ export default function MenuClient() {
             onClick={() => setSelectedItem(null)}
           >
             <motion.div
-              className="w-full max-w-xl rounded-[28px] border border-sand-200 bg-sand-50 p-6 shadow-soft"
+              className={cn(
+                "w-full max-w-xl rounded-[28px] border border-sand-200 bg-sand-50 p-6 shadow-soft",
+                isRTL && "text-right"
+              )}
               initial={{ scale: 0.96, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.96, opacity: 0 }}
@@ -136,7 +143,7 @@ export default function MenuClient() {
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-[0.3em] text-espresso-400">
-                    {selectedItem.category}
+                    {t.menu.categories[selectedItem.category]}
                   </p>
                   <h3 className="mt-2 text-2xl font-semibold text-espresso-950">
                     {selectedItem.name}
@@ -166,6 +173,7 @@ export default function MenuClient() {
                   SAR {selectedItem.price}
                 </span>
                 <Button
+                  type="button"
                   onClick={() => setCartCount((count) => count + 1)}
                   variant="primary"
                 >

@@ -6,12 +6,6 @@ import { useLanguage } from "@/components/language-provider";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
-const socialLinks = [
-  { label: "Instagram", href: "https://instagram.com" },
-  { label: "X", href: "https://x.com" },
-  { label: "TikTok", href: "https://tiktok.com" },
-];
-
 export function Footer() {
   const { t, isRTL } = useLanguage();
   const [email, setEmail] = useState("");
@@ -36,18 +30,6 @@ export function Footer() {
             Specialty Saudi coffee portfolio highlighting cultural rituals, modern craft, and
             sensory hospitality.
           </p>
-          <div className={cn("flex flex-wrap gap-3", isRTL && "justify-end")}>
-            {socialLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="rounded-full border border-sand-200 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-espresso-600 hover:border-espresso-400 hover:text-espresso-950"
-                aria-label={link.label}
-              >
-                {link.label}
-              </a>
-            ))}
-          </div>
         </div>
 
         <div className={cn("space-y-3 text-sm", isRTL && "text-right")}>
@@ -102,7 +84,13 @@ export function Footer() {
       <div className="border-t border-sand-200/70">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-6 py-6 text-xs text-espresso-500 md:flex-row md:px-10">
           <span>© 2026 Qahwa Najd. Saudi Arabia.</span>
-          <span>Crafted for a premium Saudi coffee experience.</span>
+          <a
+            href="https://wa.me/96181309837"
+            className="font-semibold text-espresso-600 hover:text-espresso-950"
+            aria-label="Developed by abdulrahman.dev on WhatsApp"
+          >
+            Developed by abdulrahman.dev
+          </a>
         </div>
       </div>
     </footer>
