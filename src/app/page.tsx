@@ -19,13 +19,13 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <div className="mx-auto flex w-full max-w-6xl flex-col gap-20 px-6 pb-24 pt-16 md:px-10">
-      <section className="relative grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+      <section className="relative grid items-center gap-10 overflow-hidden rounded-[32px] p-8 md:p-12 lg:grid-cols-[1.1fr_0.9fr]">
         <div className="absolute inset-0 -z-10 rounded-[32px] bg-cream-50/70" aria-hidden="true" />
         <div className="absolute inset-0 -z-10 rounded-[32px] bg-ornament opacity-40" aria-hidden="true" />
 
         <FadeIn className="space-y-6">
           <p className="text-xs font-semibold uppercase tracking-[0.35em] text-espresso-400">
-            Qahwa Najd · Saudi Arabia
+            Qahwa Najd - Saudi Arabia
           </p>
           <h1 className="text-4xl font-semibold text-espresso-950 md:text-5xl lg:text-6xl">
             Saudi coffee culture refined into a modern, premium ritual.
@@ -37,14 +37,14 @@ export default function Home() {
           <HeroActions />
         </FadeIn>
 
-        <FadeIn className="relative">
+        <FadeIn className="relative flex items-center justify-center p-2 md:p-4">
           <div className="absolute -left-6 top-6 h-24 w-24 rounded-full border border-gold-500/40" />
           <Image
             src={media.hero}
             alt="Signature Saudi Qahwa service"
             width={520}
             height={520}
-            className="rounded-[32px] shadow-soft"
+            className="rounded-[32px] object-cover shadow-soft"
             priority
           />
         </FadeIn>
@@ -55,7 +55,7 @@ export default function Home() {
           <SectionHeading
             eyebrow="Signature Ritual"
             title="Saudi Qahwa Experience"
-            description="An elegant ritual shaped by cardamom, saffron, and dates — served with quiet ceremony."
+            description="An elegant ritual shaped by cardamom, saffron, and dates - served with quiet ceremony."
           />
         </FadeIn>
         <div className="grid gap-6 md:grid-cols-3">
@@ -129,9 +129,9 @@ export default function Home() {
               key={testimonial.name}
               className="rounded-[22px] border border-sand-200 bg-sand-50 p-5"
             >
-              <p className="text-sm text-espresso-700">“{testimonial.quote}”</p>
+              <p className="text-sm text-espresso-700">"{testimonial.quote}"</p>
               <div className="mt-4 text-xs font-semibold uppercase tracking-[0.25em] text-espresso-400">
-                {testimonial.name} · {testimonial.title}
+                {testimonial.name} - {testimonial.title}
               </div>
             </FadeIn>
           ))}

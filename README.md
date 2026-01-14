@@ -9,7 +9,7 @@ Premium Saudi specialty coffee portfolio website built with Next.js App Router, 
 - Filterable menu with modal detail view and dietary badges
 - Masonry gallery with lightbox
 - Contact form with validation, copy-to-clipboard phone button, and toast
-- Local data models and online image placeholders (loremflickr) for coffee-themed imagery
+- Local data models and online image placeholders (Unsplash) for coffee-themed imagery
 
 ## Tech Stack
 - Next.js (App Router)

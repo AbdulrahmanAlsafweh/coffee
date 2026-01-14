@@ -1,14 +1,14 @@
 "use client";
 
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
-import type { Language } from "@/lib/i18n";
+import type { Language, Translations } from "@/lib/i18n";
 import { translations } from "@/lib/i18n";
 
 type LanguageContextValue = {
   lang: Language;
   isRTL: boolean;
   setLang: (lang: Language) => void;
-  t: (typeof translations)["en"];
+  t: Translations;
 };
 
 const LanguageContext = createContext<LanguageContextValue | null>(null);

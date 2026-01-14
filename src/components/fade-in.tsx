@@ -1,14 +1,19 @@
 "use client";
 
-import type { HTMLAttributes } from "react";
+import type { HTMLMotionProps } from "framer-motion";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
-type FadeInProps = HTMLAttributes<HTMLDivElement> & {
+type FadeInProps = HTMLMotionProps<"div"> & {
   delay?: number;
 };
 
-export function FadeIn({ children, delay = 0, className, ...props }: FadeInProps) {
+export function FadeIn({
+  children,
+  delay = 0,
+  className,
+  ...props
+}: FadeInProps) {
   return (
     <motion.div
       className={cn("animate-fade-in", className)}
